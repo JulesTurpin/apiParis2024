@@ -13,7 +13,7 @@ public class Olympiade {
     private Long id;
 
     @Column(name = "numero")
-    private Long numero;
+    private String numero;
 
     @Column(name = "annee")
     private Integer annee;
