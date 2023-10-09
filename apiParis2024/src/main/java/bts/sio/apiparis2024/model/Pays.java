@@ -15,7 +15,4 @@ public class Pays {
     @Column(name = "libelle")
     private String libelle;
 
-    @ManyToOne
-    @JoinColumn(name = "olympiade_id")
-    private Olympiade olympiade;
 }
