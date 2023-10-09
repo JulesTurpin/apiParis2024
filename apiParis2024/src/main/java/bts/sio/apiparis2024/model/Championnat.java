@@ -21,7 +21,4 @@ public class Championnat {
     @Column(name = "dateChampionnat")
     private Integer dateChampionnat;
 
-    @ManyToOne
-    @JoinColumn(name = "palmares_id")
-    private Palmares palmares;
 }
