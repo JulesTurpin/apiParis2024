@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ResultatAthleteController {
@@ -23,7 +24,7 @@ public class ResultatAthleteController {
 
     @GetMapping("/resultatAthlete/{id}")
     public ResponseEntity<List<ResultatAthlete>> getResultatAthlete(@PathVariable("id") final Long id) {
-        List<ResultatAthlete> resultatAthlete = resultatAthleteService.getResultatAthlete(id);
+        List<ResultatAthlete> resultatAthlete = resultatAthleteService.getResultatAthleteByEpreuve(id);
         if (!resultatAthlete.isEmpty()) {
             return ResponseEntity.ok(resultatAthlete);
         } else {
@@ -36,10 +37,10 @@ public class ResultatAthleteController {
 
     @PutMapping("/resultatAthlete/{id}")
     public ResponseEntity<ResultatAthlete> updateResultatAthlete(@PathVariable("id") final Long id, @RequestBody ResultatAthlete resultatAthlete) {
-        List<ResultatAthlete> resultatAthletes = resultatAthleteService.getResultatAthlete(id);
+        Optional<ResultatAthlete> resultatAthletes = resultatAthleteService.getResultatAthlete(id);
 
         if (!resultatAthletes.isEmpty()) {
-            ResultatAthlete currentResultatAthlete = resultatAthletes.get(0);
+            ResultatAthlete currentResultatAthlete = resultatAthletes.get();
 
             Athlete athlete_id = resultatAthlete.getAthlete();
             if (athlete_id != null) {

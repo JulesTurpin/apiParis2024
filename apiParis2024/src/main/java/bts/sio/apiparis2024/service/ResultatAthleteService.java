@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @Service
@@ -15,7 +16,10 @@ public class ResultatAthleteService {
     @Autowired
     private ResultatAthleteRepositrory resultatAthleteRepositrory;
 
-    public List<ResultatAthlete> getResultatAthlete(final Long id) {
+    public Optional<ResultatAthlete> getResultatAthlete(final Long id) {
+        return resultatAthleteRepositrory.findById(id);
+    }
+    public List<ResultatAthlete> getResultatAthleteByEpreuve(final Long id) {
         return resultatAthleteRepositrory.findByEpreuve_Id(id);
     }
 
